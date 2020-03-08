@@ -1,3 +1,4 @@
 # leetcode-problems-crawler
 
-writting by ts
+## Usage
+`npx leetcode-problems-crawler`
