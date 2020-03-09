@@ -10,23 +10,33 @@ import { createDirectory, writeQuestion, writeSolution } from './utils'
 program
   .name('leetcode-problem-crawler')
   .usage('-s 1 -e 10')
-  .option('-s, --start <number>', 'problem start index', v =>
-    v ? parseInt(v, 10) : 0
-  )
-  .option('-e, --end <number>', 'problem end index', v =>
-    v ? parseInt(v, 10) : 0
-  )
+  .option('-r, --rule <string>', 'crawling rule, eg1: 1-10, eg2: 1,2,3, eg3: 5')
   .option('-d, --dir <string>', 'download dirname', config.DEFAULT_DIRNAME)
-  .option('-i, --initial <string>', 'generate code snippet in solution.[language_file_suffix]')
+  .option(
+    '-i, --initial <string>',
+    'generate code snippet in solution.[language_file_suffix]'
+  )
 program.parse(process.argv)
 
-if (program.start && program.end) {
-  main(program)
+const rule = program.rule as string
+if (rule) {
+  const ids = []
+  if (rule.includes('-')) {
+    const [start, end] = rule.split('-').map(idnumber => Number(idnumber))
+    for (let i = start; i <= end; i++) {
+      ids.push(i)
+    }
+  } else if (rule.includes(',')) {
+    ids.push(...rule.split(',').map(Number))
+  } else {
+    ids.push(Number(rule))
+  }
+  main(ids, program)
 } else {
   program.help()
 }
 
-async function main({ start, end, dir, initial }: any) {
+async function main(ids: number[], { start, end, dir, initial }: any) {
   const { text } = await request
     .get(config.API_PROBLEMS)
     .set('Accept', 'text/html')
@@ -36,7 +46,7 @@ async function main({ start, end, dir, initial }: any) {
       difficulty: { level },
       stat: { frontend_question_id, question__title_slug }
     } = pair
-    if (start > frontend_question_id || end < frontend_question_id) {
+    if (!ids.includes(frontend_question_id)) {
       return
     }
     const {

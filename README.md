@@ -3,7 +3,17 @@
 ## Usage
 crawling problem 1 to 5:
 ```
-$ npx leetcode-problem-crawler -s 1 -e 5
+$ npx leetcode-problem-crawler -r 1-5
+```
+
+crawling problem 1、2、3:
+```
+$ npx leetcode-problem-crawler -r 1,2,3
+```
+
+just crawling problem 5:
+```
+$ npx leetcode-problem-crawler -r 5
 ```
 
 then we will get problems directory like below:
@@ -19,8 +29,7 @@ problems
 There are some useful options:
 ```
 Options:
-  -s, --start <number>    problem start index
-  -e, --end <number>      problem end index
+  -r, --rule <string>     crawling rule, eg1: 1-10, eg2: 1,2,3, eg3: 5
   -d, --dir <string>      download dirname (default: "problems")
   -i, --initial <string>  generate code snippet in solution.[language_file_suffix]
   -h, --help              output usage information
