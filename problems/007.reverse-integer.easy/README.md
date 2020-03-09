@@ -1,3 +1,4 @@
+## 7. Reverse Integer
 <p>Given a 32-bit signed integer, reverse digits of an integer.</p>
 
 <p><strong>Example 1:</strong></p>

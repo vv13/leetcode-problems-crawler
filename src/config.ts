@@ -19,12 +19,24 @@ export default {
   },
   questionDataQL: (titleSlug: any) => ({
     operationName: 'questionData',
-    query: `query questionData($titleSlug: String!) {
-        question(titleSlug: $titleSlug) {
-          likes dislikes content similarQuestions stats hints
-          codeSnippets {lang  langSlug code  __typename  }
+    query: `
+    query questionData($titleSlug: String!) {
+      question(titleSlug: $titleSlug) {
+        content
+        similarQuestions
+        stats
+        hints
+        title
+        questionFrontendId
+        codeSnippets {
+          lang
+          langSlug
+          code
+          __typename
         }
-      }`,
+      }
+    }
+`,
     variables: { titleSlug }
   })
 }

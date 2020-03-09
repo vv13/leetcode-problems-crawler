@@ -1,3 +1,4 @@
+## 8. String to Integer (atoi)
 <p>Implement <code><span>atoi</span></code> which&nbsp;converts a string to an integer.</p>
 
 <p>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>

@@ -1,3 +1,4 @@
+## 9. Palindrome Number
 <p>Determine whether an integer is a palindrome. An integer&nbsp;is&nbsp;a&nbsp;palindrome when it&nbsp;reads the same backward as forward.</p>
 
 <p><strong>Example 1:</strong></p>
@@ -26,3 +27,7 @@
 <p><strong>Follow up:</strong></p>
 
 <p>Coud you solve&nbsp;it without converting the integer to a string?</p>
+
+
+## Hints
+1. Beware of overflow when you reverse the integer.
