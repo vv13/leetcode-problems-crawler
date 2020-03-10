@@ -26,7 +26,7 @@ export function writeQuestion(dirname: string, content: any) {
 export function writeSolution(dirname: string, langSlug: string, code: any) {
   const filePath = path.join(
     dirname,
-    `solution.${config.langSlugMap[langSlug]}`
+    `solution${config.langSlugMap[langSlug]}`
   )
   if (!fs.existsSync(filePath)) {
     fs.writeFileSync(filePath, code)
