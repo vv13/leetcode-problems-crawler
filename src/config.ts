@@ -27,6 +27,7 @@ export default {
         stats
         hints
         title
+        titleSlug
         questionFrontendId
         codeSnippets {
           lang

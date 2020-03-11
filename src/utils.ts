@@ -13,7 +13,7 @@ export function writeQuestion(dirname: string, content: any) {
   // tslint:disable-next-line: no-console
   console.log('created: ' + filePath)
   let fileContent =
-    `## ${content.questionFrontendId}. ${content.title}\n` + content.content
+    `## [${content.questionFrontendId}. ${content.title}](https://leetcode.com/problems/${content.titleSlug}/)\n` + content.content
   if (content.hints && content.hints.length) {
     fileContent += '\n\n## Hints\n'
     content.hints.forEach((hint: string, index: number) => {
