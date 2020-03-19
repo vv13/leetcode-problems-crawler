@@ -11,9 +11,8 @@ program
   .name('leetcode-problem-crawler')
   .usage('-s 1 -e 10')
   .option('-r, --rule <string>', 'crawling rule, eg1: 1-10, eg2: 1,2,3, eg3: 5')
-  .option('-d, --dir <string>', 'download dirname', config.DEFAULT_DIRNAME)
   .option(
-    '-i, --initial <string>',
+    '-l, --lang <string>',
     'generate code snippet in solution.[language_file_suffix]'
   )
 program.parse(process.argv)
@@ -31,12 +30,12 @@ if (rule) {
   } else {
     ids.push(Number(rule))
   }
-  main(ids, program)
+  main(ids, program.lang)
 } else {
   program.help()
 }
 
-async function main(ids: number[], { start, end, dir, initial }: any) {
+async function main(ids: number[], langSlug: string) {
   const { text } = await request
     .get(config.API_PROBLEMS)
     .set('Accept', 'text/html')
@@ -58,22 +57,21 @@ async function main(ids: number[], { start, end, dir, initial }: any) {
       .send(config.questionDataQL(question__title_slug))
     const dirname = path.join(
       process.cwd(),
-      dir,
       `${frontend_question_id
         .toString()
         .padStart(3, '0')}.${question__title_slug}.${config.levelMap[level]}`
     )
     createDirectory(dirname)
     writeQuestion(dirname, question)
-    if (initial) {
+    if (langSlug) {
       const { codeSnippets } = question
       const snippet = codeSnippets.find(
-        (s: { langSlug: string }) => s.langSlug === initial
+        (s: { langSlug: string }) => s.langSlug === langSlug
       )
-      if (!snippet || !config.langSlugMap[initial]) {
+      if (!snippet) {
         return
       }
-      writeSolution(dirname, initial, snippet.code)
+      writeSolution(dirname, langSlug, snippet.code)
     }
   })
 }
