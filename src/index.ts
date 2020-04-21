@@ -5,15 +5,15 @@ import path from 'path'
 import request from 'superagent'
 import config from './config'
 import { IPair } from './types'
-import { createDirectory, writeQuestion, writeSolution } from './utils'
+import { createDirectory, writeInformation, writeQuestion, writeSolution } from './utils'
 
 program
   .name('leetcode-problem-crawler')
-  .usage('-s 1 -e 10')
   .option('-r, --rule <string>', 'crawling rule, eg1: 1-10, eg2: 1,2,3, eg3: 5')
   .option(
     '-l, --lang <string>',
-    'generate code snippet in solution.[language_file_suffix]'
+    'generate code snippet with language, default is python3.',
+    'python3'
   )
 program.parse(process.argv)
 
@@ -59,7 +59,7 @@ async function main(ids: number[], langSlug: string) {
       process.cwd(),
       `${frontend_question_id
         .toString()
-        .padStart(3, '0')}.${question__title_slug}.${config.levelMap[level]}`
+        .padStart(3, '0')}.${question__title_slug}`
     )
     createDirectory(dirname)
     writeQuestion(dirname, question)
@@ -73,5 +73,6 @@ async function main(ids: number[], langSlug: string) {
       }
       writeSolution(dirname, langSlug, snippet.code)
     }
+    writeInformation(dirname, {question, difficulty: config.levelMap[level]})
   })
 }
