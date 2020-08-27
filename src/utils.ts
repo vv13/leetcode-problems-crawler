@@ -31,15 +31,18 @@ export function writeSolution(dirname: string, langSlug: string, code: any) {
   }
 }
 
-export function writeInformation(dirname: string, { question, difficulty }: any) {
+export function writeInformation(
+  dirname: string,
+  { question, difficulty }: any
+) {
   const { similarQuestions } = question
-  const data = { difficulty, similarQuestions }
+  const data = { difficulty, similarQuestions: JSON.parse(similarQuestions) }
   const filePath = path.join(dirname, `information.json`)
   if (!fs.existsSync(filePath)) {
     fs.writeFileSync(filePath, JSON.stringify(data, undefined, 4))
   } else {
     let jsonData = JSON.parse(fs.readFileSync(filePath, 'utf8'))
-    jsonData = {...jsonData, ...data}
+    jsonData = { ...jsonData, ...data }
     fs.writeFileSync(filePath, JSON.stringify(jsonData, undefined, 4))
   }
 }
