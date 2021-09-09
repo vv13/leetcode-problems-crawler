@@ -1,8 +1,12 @@
 import path from 'path'
 
 export default {
-  API_GRAPHQL: 'https://leetcode.com/graphql',
-  API_PROBLEMS: 'https://leetcode.com/api/problems/all/',
+  cn: {
+    domain: 'https://leetcode-cn.com'
+  },
+  en: {
+    domain: 'https://leetcode.com'
+  },
   DEFAULT_DIRNAME: 'problems',
   langSlugMap: {
     csharp: '.cs',
@@ -22,6 +26,8 @@ export default {
     query: `
     query questionData($titleSlug: String!) {
       question(titleSlug: $titleSlug) {
+        translatedTitle
+        translatedContent
         content
         similarQuestions
         stats

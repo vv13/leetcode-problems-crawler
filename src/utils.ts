@@ -2,22 +2,25 @@ import fs from 'fs'
 import path from 'path'
 import config from './config'
 
-export function createDirectory(dirname: string) {
+export function writeDirectory(dirname: string) {
   if (!fs.existsSync(dirname)) {
     fs.mkdirSync(dirname, { recursive: true })
   }
 }
 
-export function writeQuestion(dirname: string, content: any) {
-  const filePath = path.join(dirname, 'README.md')
+export function writeQuestion(dirname: string, questionConfig: any) {
+  const filePath = path.join(
+    dirname,
+    questionConfig.i18n === 'cn' ? 'README_CN.md' : 'README.md'
+  )
   // tslint:disable-next-line: no-console
   console.log('created: ' + filePath)
   let fileContent =
-    `## [${content.questionFrontendId}. ${content.title}](https://leetcode.com/problems/${content.titleSlug}/)\n` +
-    content.content
-  if (content.hints && content.hints.length) {
+    `## [${questionConfig.questionFrontendId}. ${questionConfig.title}](${questionConfig.domain}/problems/${questionConfig.titleSlug}/)\n` +
+    questionConfig.content
+  if (questionConfig.hints && questionConfig.hints.length) {
     fileContent += '\n\n## Hints\n'
-    content.hints.forEach((hint: string, index: number) => {
+    questionConfig.hints.forEach((hint: string, index: number) => {
       fileContent += `${index + 1}. ${hint}\n`
     })
   }
