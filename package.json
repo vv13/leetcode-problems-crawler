@@ -35,7 +35,7 @@
     "npm-run-all": "^4.1.5",
     "open-cli": "^5.0.0",
     "prettier": "^1.18.2",
-    "standard-version": "^6.0.1",
+    "standard-version": "^9.5.0",
     "ts-node": "^8.6.2",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
