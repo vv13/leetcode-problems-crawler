@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:latest", "tslint-config-prettier", "tslint-immutable"],
+  "extends": ["tslint:latest", "tslint-config-prettier"],
   "defaultSeverity": "warning",
   "rules": {
     "no-console": {

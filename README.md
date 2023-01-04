@@ -4,17 +4,17 @@
 ## Usage
 crawling problem 1 to 5:
 ```
-$ npx leetcode-problem-crawler -r 1-5
+$ npx leetcode-problems-crawler -r 1-5
 ```
 
 crawling problem 1、2、3:
 ```
-$ npx leetcode-problem-crawler -r 1,2,3
+$ npx leetcode-problems-crawler -r 1,2,3
 ```
 
 just crawling problem 5:
 ```
-$ npx leetcode-problem-crawler -r 5
+$ npx leetcode-problems-crawler -r 5
 ```
 
 then we will get directory like below:

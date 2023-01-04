@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import program from 'commander'
+import { program } from 'commander'
 import path from 'path'
 import request from 'superagent'
 import config from './config'
@@ -27,7 +27,9 @@ program
   )
 program.parse(process.argv)
 
-const rule = program.rule as string
+const options = program.opts();
+
+const rule = options.rule as string
 if (rule) {
   const ids = []
   if (rule.includes('-')) {
@@ -40,7 +42,7 @@ if (rule) {
   } else {
     ids.push(Number(rule))
   }
-  main(ids, program.lang, program.i18n)
+  main(ids, options.lang, options.i18n)
 } else {
   program.help()
 }
