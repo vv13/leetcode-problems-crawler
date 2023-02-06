@@ -4,7 +4,8 @@ import { program } from 'commander'
 import path from 'path'
 import request from 'superagent'
 import config from './config'
-import { IPair } from './types'
+import * as helpers from './helper'
+import { InputParams, IPair } from './types'
 import {
   writeDirectory,
   writeInformation,
@@ -12,42 +13,31 @@ import {
   writeSolution
 } from './utils'
 
-program
-  .name('leetcode-problem-crawler')
-  .option('-r, --rule <string>', 'crawling rule, eg1: 1-10, eg2: 1,2,3, eg3: 5')
-  .option(
-    '-i, --i18n <string>',
-    'currently support en and cn, default is en.',
-    'en'
-  )
-  .option(
-    '-l, --lang <string>',
-    'generate code snippet with language, default is python3.',
-    'python3'
-  )
-program.parse(process.argv)
+(async () => {
+  program
+    .name('leetcode-problem-crawler')
+    .option('-r, --rule <string>', 'crawling rule, eg1: 1-10, eg2: 1,2,3, eg3: 5', helpers.parseIds)
+    .option(
+      '-i, --i18n <string>',
+      'currently support en and cn, default is en.',
+      helpers.parseI18ns,
+      'en'
+    )
+    .option(
+      '-l, --lang <string>',
+      'generate code snippet with language, default is python3.',
+      helpers.parseLang,
+      'python3'
+    )
+  program.parse()
 
-const options = program.opts();
+  const options: InputParams = program.opts();
+  main(options.rule, options.lang, options.i18n)
+})()
 
-const rule = options.rule as string
-if (rule) {
-  const ids = []
-  if (rule.includes('-')) {
-    const [start, end] = rule.split('-').map(idnumber => Number(idnumber))
-    for (let i = start; i <= end; i++) {
-      ids.push(i)
-    }
-  } else if (rule.includes(',')) {
-    ids.push(...rule.split(',').map(Number))
-  } else {
-    ids.push(Number(rule))
-  }
-  main(ids, options.lang, options.i18n)
-} else {
-  program.help()
-}
 
-async function main(ids: number[], langSlug: string, i18n: 'cn' | 'en') {
+
+async function main(ids: number[], langSlug: string, i18n: InputParams['i18n']) {
   const { domain } = config[i18n]
   const problems = await getAllProblems(domain)
 
@@ -60,15 +50,15 @@ async function main(ids: number[], langSlug: string, i18n: 'cn' | 'en') {
       return
     }
 
-    const question = await getQuestion(domain, question__title_slug)
-
     const dirname = path.join(
       process.cwd(),
       `${frontend_question_id
         .toString()
         .padStart(3, '0')}.${question__title_slug}`
     )
+    writeDirectory(dirname)
 
+    const question = await getQuestion(domain, question__title_slug)
     const questionConfig = {
       title: i18n === 'en' ? question.title : question.translatedTitle,
       content: i18n === 'en' ? question.content : question.translatedContent,
@@ -78,19 +68,17 @@ async function main(ids: number[], langSlug: string, i18n: 'cn' | 'en') {
       domain,
       i18n
     }
-
-    writeDirectory(dirname)
     writeQuestion(dirname, questionConfig)
-    if (langSlug) {
-      const { codeSnippets } = question
-      const snippet = codeSnippets.find(
-        (s: { langSlug: string }) => s.langSlug === langSlug
-      )
-      if (!snippet) {
-        return
-      }
-      writeSolution(dirname, langSlug, snippet.code)
+
+    const { codeSnippets } = question
+    const snippet = codeSnippets.find(
+      (s: { langSlug: string }) => s.langSlug === langSlug
+    )
+    if (!snippet) {
+      return
     }
+    writeSolution(dirname, langSlug, snippet.code)
+
     writeInformation(dirname, { question, difficulty: config.levelMap[level] })
   })
 }

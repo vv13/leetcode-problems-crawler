@@ -1,4 +1,29 @@
 {
-    "difficulty": "easy",
-    "similarQuestions": "[{\"title\": \"String to Integer (atoi)\", \"titleSlug\": \"string-to-integer-atoi\", \"difficulty\": \"Medium\", \"translatedTitle\": null}, {\"title\": \"Reverse Bits\", \"titleSlug\": \"reverse-bits\", \"difficulty\": \"Easy\", \"translatedTitle\": null}]"
+    "difficulty": "medium",
+    "similarQuestions": [
+        {
+            "title": "String to Integer (atoi)",
+            "titleSlug": "string-to-integer-atoi",
+            "difficulty": "Medium",
+            "translatedTitle": null
+        },
+        {
+            "title": "Reverse Bits",
+            "titleSlug": "reverse-bits",
+            "difficulty": "Easy",
+            "translatedTitle": null
+        },
+        {
+            "title": "A Number After a Double Reversal",
+            "titleSlug": "a-number-after-a-double-reversal",
+            "difficulty": "Easy",
+            "translatedTitle": null
+        },
+        {
+            "title": "Count Number of Distinct Integers After Reverse Operations",
+            "titleSlug": "count-number-of-distinct-integers-after-reverse-operations",
+            "difficulty": "Medium",
+            "translatedTitle": null
+        }
+    ]
 }

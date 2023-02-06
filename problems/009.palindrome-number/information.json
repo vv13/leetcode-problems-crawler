@@ -1,4 +1,23 @@
 {
     "difficulty": "easy",
-    "similarQuestions": "[{\"title\": \"Palindrome Linked List\", \"titleSlug\": \"palindrome-linked-list\", \"difficulty\": \"Easy\", \"translatedTitle\": null}]"
+    "similarQuestions": [
+        {
+            "title": "Palindrome Linked List",
+            "titleSlug": "palindrome-linked-list",
+            "difficulty": "Easy",
+            "translatedTitle": null
+        },
+        {
+            "title": "Find Palindrome With Fixed Length",
+            "titleSlug": "find-palindrome-with-fixed-length",
+            "difficulty": "Medium",
+            "translatedTitle": null
+        },
+        {
+            "title": "Strictly Palindromic Number",
+            "titleSlug": "strictly-palindromic-number",
+            "difficulty": "Medium",
+            "translatedTitle": null
+        }
+    ]
 }

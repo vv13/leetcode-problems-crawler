@@ -1,4 +1,23 @@
 {
     "difficulty": "medium",
-    "similarQuestions": "[{\"title\": \"Reverse Integer\", \"titleSlug\": \"reverse-integer\", \"difficulty\": \"Easy\", \"translatedTitle\": null}, {\"title\": \"Valid Number\", \"titleSlug\": \"valid-number\", \"difficulty\": \"Hard\", \"translatedTitle\": null}]"
+    "similarQuestions": [
+        {
+            "title": "Reverse Integer",
+            "titleSlug": "reverse-integer",
+            "difficulty": "Medium",
+            "translatedTitle": null
+        },
+        {
+            "title": "Valid Number",
+            "titleSlug": "valid-number",
+            "difficulty": "Hard",
+            "translatedTitle": null
+        },
+        {
+            "title": "Check if Numbers Are Ascending in a Sentence",
+            "titleSlug": "check-if-numbers-are-ascending-in-a-sentence",
+            "difficulty": "Easy",
+            "translatedTitle": null
+        }
+    ]
 }

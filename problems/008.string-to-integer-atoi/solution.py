@@ -1,3 +1,3 @@
 class Solution:
-    def myAtoi(self, str: str) -> int:
+    def myAtoi(self, s: str) -> int:
         

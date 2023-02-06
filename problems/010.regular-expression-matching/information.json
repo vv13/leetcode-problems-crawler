@@ -1,4 +1,11 @@
 {
     "difficulty": "hard",
-    "similarQuestions": "[{\"title\": \"Wildcard Matching\", \"titleSlug\": \"wildcard-matching\", \"difficulty\": \"Hard\", \"translatedTitle\": null}]"
+    "similarQuestions": [
+        {
+            "title": "Wildcard Matching",
+            "titleSlug": "wildcard-matching",
+            "difficulty": "Hard",
+            "translatedTitle": null
+        }
+    ]
 }
