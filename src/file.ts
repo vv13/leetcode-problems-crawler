@@ -24,11 +24,11 @@ export function writeQuestion(dirname: string, questionConfig: any) {
       fileContent += `${index + 1}. ${hint}\n`
     })
   }
-  fileContent += fs.writeFileSync(filePath, fileContent)
+  fs.writeFileSync(filePath, fileContent)
 }
 
 export function writeSolution(dirname: string, langSlug: string, code: any) {
-  const filePath = path.join(dirname, `solution${config.langSlugMap[langSlug]}`)
+  const filePath = path.join(dirname, `Solution${config.langSlugMap[langSlug]}`)
   if (!fs.existsSync(filePath)) {
     fs.writeFileSync(filePath, code)
   }

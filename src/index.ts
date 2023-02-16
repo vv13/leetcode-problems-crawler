@@ -11,7 +11,7 @@ import {
   writeInformation,
   writeQuestion,
   writeSolution
-} from './utils'
+} from './file'
 
 (async () => {
   program

@@ -21,9 +21,11 @@ then we will get directory like below:
 ```
 ├── 001.two-sum
 │   ├── information.json
+│   ├── Solution.py
 │   ├── README.md
 ├── 002.add-two-numbers
 │   ├── information.json
+│   ├── Solution.py
 │   ├── README.md
 ...
 ```
