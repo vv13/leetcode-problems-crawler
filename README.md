@@ -46,6 +46,7 @@ with `-l`, now support:
     php -> '.php',
     python -> '.py',
     python3 -> '.py'
+    cpp -> '.cpp'
 ```
 
 Welcome folk and customization.
