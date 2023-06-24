@@ -32,10 +32,13 @@ then we will get directory like below:
 
 There are some useful options:
 ```
+Usage: leetcode-problem-crawler [options]
+
 Options:
-  -r, --rule <string>     crawling rule, eg1: 1-10, eg2: 1,2,3, eg3: 5
-  -l, --lang <string>  generate code snippet with language, default is python3
-  -h, --help              output usage information
+  -r, --rule <string>  crawling rule, eg1: 1-10, eg2: 1,2,3, eg3: 5
+  -i, --i18n <string>  currently support en and cn, default is en. (default: "en")
+  -l, --lang <string>  generate code snippet with language, default is python3. (default: "python3")
+  -h, --help           display help for command
 ```
 
 with `-l`, now support:
@@ -46,6 +49,7 @@ with `-l`, now support:
     php -> '.php',
     python -> '.py',
     python3 -> '.py'
+    cpp -> '.cpp'
 ```
 
 Welcome folk and customization.

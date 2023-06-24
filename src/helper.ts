@@ -1,5 +1,4 @@
 import { InvalidArgumentError, program } from 'commander'
-import { InputParams } from "./types"
 import config from './config'
 
 export function parseIds(idStr?: string) {
@@ -33,7 +32,6 @@ export function parseI18ns(i18nStr?: string) {
 }
 
 export function parseLang(lang?: string) {
-    debugger
     const langs = Object.keys(config.langSlugMap)
     if (!langs.includes(lang)) {
         const msg = 'Invalid lang parameter value'

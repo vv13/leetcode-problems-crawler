@@ -14,7 +14,8 @@ export default {
     javascript: '.js',
     php: '.php',
     python: '.py',
-    python3: '.py'
+    python3: '.py',
+    cpp: '.cpp'
   },
   levelMap: {
     1: 'easy',
