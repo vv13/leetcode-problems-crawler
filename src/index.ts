@@ -37,7 +37,7 @@ import {
 
 
 
-async function main(ids: number[], langSlug: string, i18n: InputParams['i18n']) {
+async function main(ids: number[], langSlugs: string[], i18n: InputParams['i18n']) {
   const { domain } = config[i18n]
   const problems = await getAllProblems(domain)
 
@@ -71,13 +71,15 @@ async function main(ids: number[], langSlug: string, i18n: InputParams['i18n']) 
     writeQuestion(dirname, questionConfig)
 
     const { codeSnippets } = question
-    const snippet = codeSnippets.find(
-      (s: { langSlug: string }) => s.langSlug === langSlug
-    )
-    if (!snippet) {
-      return
+  
+    for (const idx in langSlugs) {
+      const langSlug = langSlugs[idx];
+      const snippet = codeSnippets.find((s) => s.langSlug === langSlug);
+      if (!snippet) {
+          continue;
+      }
+      writeSolution(dirname, langSlug, snippet.code);
     }
-    writeSolution(dirname, langSlug, snippet.code)
 
     writeInformation(dirname, { question, difficulty: config.levelMap[level] })
   })

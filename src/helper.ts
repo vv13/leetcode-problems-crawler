@@ -32,11 +32,23 @@ export function parseI18ns(i18nStr?: string) {
 }
 
 export function parseLang(lang?: string) {
-    const langs = Object.keys(config.langSlugMap)
-    if (!langs.includes(lang)) {
-        const msg = 'Invalid lang parameter value'
-        console.log(msg)
-        throw new InvalidArgumentError(msg)
+    const langStrs = [];
+    if (langStr.includes(',')) {
+        langStrs.push(...langStr.split(','));
     }
-    return lang
+    else {
+        langStrs.push(langStr);
+    }
+    const allowedLangs = Object.keys(config.langSlugMap)
+    const langs = langStrs.map(lang => {
+        if (allowedLangs.includes(lang)) {
+            return lang;
+        }
+        else {
+            const msg = 'Invalid lang parameter value';
+            console.log(msg);
+            throw new InvalidArgumentError(msg);
+        }
+    });
+    return langs;
 }
