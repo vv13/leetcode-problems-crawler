@@ -25,14 +25,12 @@ import {
     )
     .option(
       '-l, --lang <string>',
-      'generate code snippet with language, default is python3.',
-      helpers.parseLang,
-      'python3'
+      'generate code snippet with language, default is python3.'
     )
   program.parse()
 
   const options: InputParams = program.opts();
-  main(options.rule, options.lang, options.i18n)
+  main(options.rule, helpers.parseLang(options.lang), options.i18n)
 })()
 
 
@@ -71,7 +69,7 @@ async function main(ids: number[], langSlugs: string[], i18n: InputParams['i18n'
     writeQuestion(dirname, questionConfig)
 
     const { codeSnippets } = question
-  
+
     for (const idx in langSlugs) {
       const langSlug = langSlugs[idx];
       const snippet = codeSnippets.find((s) => s.langSlug === langSlug);

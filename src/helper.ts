@@ -31,8 +31,11 @@ export function parseI18ns(i18nStr?: string) {
     return i18nStr
 }
 
-export function parseLang(lang?: string) {
+export function parseLang(langStr?: string) {
     const langStrs = [];
+    if (!langStr){
+      return ['python3'];
+    }
     if (langStr.includes(',')) {
         langStrs.push(...langStr.split(','));
     }
