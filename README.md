@@ -41,15 +41,20 @@ Options:
   -h, --help           display help for command
 ```
 
-with `-l`, now support:
+with `-l`, support:
 ```
-    csharp -> '.cs',
-    java -> '.java',
-    javascript -> '.js',
-    php -> '.php',
-    python -> '.py',
-    python3 -> '.py'
-    cpp -> '.cpp'
+    csharp -> '.cs', java -> '.java', javascript -> '.js',
+    php -> '.php', python -> '.py', python3 -> '.py',
+    cpp -> '.cpp', c -> '.c', ruby -> '.rb',
+    swift -> '.swift', golang -> '.go', scala -> '.scala',
+    kotlin -> '.kt', rust -> '.rs', typescript -> '.ts',
+    racket -> '.rkt', erlang -> '.erl', elixir -> '.ex',
+    dart -> '.dart'
+```
+
+crawling problem 5 of C++, Java and Python3 code snippets:
+```
+$ npx leetcode-problems-crawler -r 5 -l cpp,java,python3
 ```
 
 Welcome folk and customization.
