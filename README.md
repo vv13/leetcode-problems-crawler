@@ -37,7 +37,7 @@ Usage: leetcode-problem-crawler [options]
 Options:
   -r, --rule <string>  crawling rule, eg1: 1-10, eg2: 1,2,3, eg3: 5
   -i, --i18n <string>  currently support en and cn, default is en. (default: "en")
-  -l, --lang <string>  generate code snippet with language, default is python3. (default: "python3")
+  -l, --lang <string>  generate code snippet by language, like: golang, or pass golang,python3 to generate both. (default: "python3")
   -h, --help           display help for command
 ```
 
@@ -50,6 +50,18 @@ with `-l`, now support:
     python -> '.py',
     python3 -> '.py'
     cpp -> '.cpp'
+    c -> '.c'
+    ruby -> '.rb'
+    swift -> '.swift'
+    golang -> '.go'
+    scala -> '.scala',
+    kotlin -> '.kt'
+    rust -> '.rs'
+    typescript -> '.ts'
+    racket -> '.rkt'
+    erlang -> '.erl'
+    elixir -> '.ex'
+    dart -> '.dart'
 ```
 
 Welcome folk and customization.

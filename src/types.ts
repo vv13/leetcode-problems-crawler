@@ -9,6 +9,6 @@ export interface IPair {
 
 export interface InputParams {
   i18n?: 'cn' | 'en';
-  lang?: string;
+  lang?: string[];
   rule?: number[];
 }

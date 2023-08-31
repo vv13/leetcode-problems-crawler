@@ -13,7 +13,6 @@ export function writeQuestion(dirname: string, questionConfig: any) {
     dirname,
     'README.md'
   )
-  // tslint:disable-next-line: no-console
   console.log('created: ' + filePath)
   let fileContent =
     `## [${questionConfig.questionFrontendId}. ${questionConfig.title}](${questionConfig.domain}/problems/${questionConfig.titleSlug}/)\n` +
